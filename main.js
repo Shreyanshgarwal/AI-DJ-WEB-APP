@@ -1,5 +1,7 @@
     song="";
     song2="";
+    songIsPlaying="";
+    song2IsPlaying="";
     leftWristX=0;
     leftWristY=0;
     rightWristX=0;
@@ -9,6 +11,7 @@
     function preload() {
         song=loadSound("music.mp3");
         song2=loadSound("music2.mp3");
+    
         } 
     
     
@@ -46,17 +49,29 @@ function gotPoses(results) {
 
 function draw() {
     image(video,0,0,600,500);
-
-    if (scoreleftWrist > 0.2) {
+    songIsPlaying=song.isPlaying()
     fill("#067A8A");
     stroke("#067A8A");
+    if (scoreleftWrist > 0.2) {
     circle(leftWristX,leftWristY,20);
-    InNumberleftWristY=Number(leftWristY);
-    remove_decimals=floor(InNumberleftWristY);
-    volume = remove_decimals/500;
-    document.getElementById("volume").innerHTML="Volume = "+ volume;
-    song.setVolume(volume);
+    song2.stop()
+
+    if (songIsPlaying= false) {
+        song.play();
+    }
     }
 
+    song2IsPlaying=song.isPlaying()
+    if (scoreRightWrist > 0.2) {
+        circle(leWristX,leftWristY,20);
+    song.stop()
+
+    if (song2IsPlaying= false) {
+        song2.play();
+    }
+}
 }
 
+function play() {
+    song2.play();
+}
